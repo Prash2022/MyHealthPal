@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyHealthPal</string>
+    <string name="title_activity_find_doctor">FindDoctorActivity</string>
 </resources>
