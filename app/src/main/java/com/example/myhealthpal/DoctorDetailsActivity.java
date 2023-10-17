@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -96,7 +97,7 @@ public class DoctorDetailsActivity extends AppCompatActivity {
         item.put("Line2", doctor_details[i][1]);
         item.put("Line3", doctor_details[i][2]);
         item.put("Line4", doctor_details[i][3]);
-        item.put("Line5", "Cons Fees: " +doctor_details[i][4] + "/-");
+        item.put("Line5", "Cons Fees: " +doctor_details[i][4] +"$");
         list.add(item);
     }
     sa = new SimpleAdapter(this,list,
@@ -106,5 +107,17 @@ public class DoctorDetailsActivity extends AppCompatActivity {
             );
     ListView lst = findViewById(R.id.listViewDD);
     lst.setAdapter(sa);
+    lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            Intent it = new Intent(DoctorDetailsActivity.this, BookAppointmentActivity.class);
+            it.putExtra("text1", title);
+            it.putExtra("text2", doctor_details[i][0]);
+            it.putExtra("text3", doctor_details[i][1]);
+            it.putExtra("text4", doctor_details[i][3]);
+            it.putExtra("text5", doctor_details[i][4]);
+            startActivity(it);
+        }
+    });
     }
 }
