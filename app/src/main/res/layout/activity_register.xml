@@ -10,7 +10,7 @@
 
 
     <EditText
-        android:id="@+id/editRegConfirmPassword"
+        android:id="@+id/editTextAppFees"
         android:layout_width="344dp"
         android:layout_height="56dp"
         android:layout_marginTop="28dp"
@@ -30,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRegPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAppContactNumber"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
@@ -54,11 +54,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAppTitle"
         app:layout_constraintVertical_bias="0.029" />
 
     <EditText
-        android:id="@+id/editTextRegPassword"
+        android:id="@+id/editTextAppContactNumber"
         android:layout_width="344dp"
         android:layout_height="56dp"
         android:layout_marginTop="28dp"
@@ -79,7 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRegUsername"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAppFullName"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -97,7 +97,7 @@
         app:layout_constraintVertical_bias="0.119" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewAppTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Registration"
@@ -111,7 +111,7 @@
         app:layout_constraintVertical_bias="0.053" />
 
     <EditText
-        android:id="@+id/editTextRegUsername"
+        android:id="@+id/editTextAppFullName"
         android:layout_width="344dp"
         android:layout_height="56dp"
         android:layout_marginTop="28dp"
@@ -135,7 +135,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/buttonRegister"
+        android:id="@+id/buttonBookAppointment"
         android:layout_width="353dp"
         android:layout_height="45dp"
         android:layout_marginBottom="110dp"
@@ -147,7 +147,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.413"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editRegConfirmPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAppFees"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -161,7 +161,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonRegister"
+        app:layout_constraintTop_toBottomOf="@+id/buttonBookAppointment"
         app:layout_constraintVertical_bias="0.52" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
