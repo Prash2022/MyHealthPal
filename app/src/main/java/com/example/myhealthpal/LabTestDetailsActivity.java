@@ -22,11 +22,11 @@ public class LabTestDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lab_test_details);
 
-        tvPackageName=findViewById(R.id.textViewLDPackageName);
+        tvPackageName=findViewById(R.id.textViewODTitle);
         tvTotalCost=findViewById(R.id.textViewLDTotalCost);
-        edDetails=findViewById(R.id.editTextLDTextMultiLine);
-        btnAddToCart=findViewById(R.id.buttonLDAddToCart);
-        btnBack=findViewById(R.id.buttonLDGoBack);
+        edDetails=findViewById(R.id.listViewOD);
+        btnAddToCart=findViewById(R.id.buttonCartCheckout);
+        btnBack=findViewById(R.id.buttonODBack);
 
         edDetails.setKeyListener(null);
 
@@ -48,7 +48,7 @@ public class LabTestDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SharedPreferences sharedpreferences=getSharedPreferences("shares_prefs", Context.MODE_PRIVATE);
-                String username= sharedpreferences.getString("username","");
+                String username= sharedpreferences.getString("username","").toString();
                 String product=tvPackageName.getText().toString();
                 float price=Float.parseFloat(intent.getStringExtra("text3").toString());
 

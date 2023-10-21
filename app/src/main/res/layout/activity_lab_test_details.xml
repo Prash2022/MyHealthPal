@@ -8,7 +8,7 @@
     tools:context=".LabTestDetailsActivity">
 
     <Button
-        android:id="@+id/buttonLDGoBack"
+        android:id="@+id/buttonODBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textViewLDPackageName"
+        android:id="@+id/textViewODTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Lab Test and Package"
@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.045" />
 
     <TextView
-        android:id="@+id/textViewLDlogo_5"
+        android:id="@+id/textViewCart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Deliver Location: Vancouver"
@@ -60,7 +60,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editTextLDTextMultiLine"
+        android:id="@+id/listViewOD"
         android:layout_width="290dp"
         android:layout_height="372dp"
         android:layout_marginTop="20dp"
@@ -74,11 +74,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLDPackageName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewODTitle"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/buttonLDAddToCart"
+        android:id="@+id/buttonCartCheckout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
@@ -94,7 +94,7 @@
         android:layout_marginBottom="12dp"
         android:text="TextView"
         android:textColor="@color/yellowLight"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLDAddToCart"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCartCheckout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
