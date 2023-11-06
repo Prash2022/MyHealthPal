@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeActivity">
+
+    <activity
+        android:id="@+id/homeActivity"
+        android:name="com.example.myhealthpal.HomeActivity"
+        android:label="activity_home"
+        tools:layout="@layout/activity_home" />
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.myhealthpal.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <activity
+        android:id="@+id/registerActivity"
+        android:name="com.example.myhealthpal.RegisterActivity"
+        android:label="activity_register"
+        tools:layout="@layout/activity_register" />
+    <activity
+        android:id="@+id/bookAppointmentActivity"
+        android:name="com.example.myhealthpal.BookAppointmentActivity"
+        android:label="activity_book_appointment"
+        tools:layout="@layout/activity_book_appointment" />
+    <activity
+        android:id="@+id/cartLabActivity"
+        android:name="com.example.myhealthpal.CartLabActivity"
+        android:label="activity_cart_lab"
+        tools:layout="@layout/activity_cart_lab" />
+    <activity
+        android:id="@+id/doctorDetailsActivity"
+        android:name="com.example.myhealthpal.DoctorDetailsActivity"
+        android:label="activity_doctor_details"
+        tools:layout="@layout/activity_doctor_details" />
+    <activity
+        android:id="@+id/labTestActivity"
+        android:name="com.example.myhealthpal.LabTestActivity"
+        android:label="activity_lab_test"
+        tools:layout="@layout/activity_lab_test" />
+    <activity
+        android:id="@+id/findDoctorActivity"
+        android:name="com.example.myhealthpal.FindDoctorActivity"
+        android:label="activity_find_doctor"
+        tools:layout="@layout/activity_find_doctor" />
+    <activity
+        android:id="@+id/orderDetailsActivity"
+        android:name="com.example.myhealthpal.OrderDetailsActivity"
+        android:label="activity_order_details"
+        tools:layout="@layout/activity_order_details" />
+    <activity
+        android:id="@+id/labTestDetailsActivity"
+        android:name="com.example.myhealthpal.LabTestDetailsActivity"
+        android:label="activity_lab_test_details"
+        tools:layout="@layout/activity_lab_test_details" />
+    <activity
+        android:id="@+id/labTestBookActivity"
+        android:name="com.example.myhealthpal.LabTestBookActivity"
+        android:label="activity_lab_test_book"
+        tools:layout="@layout/activity_lab_test_book" />
+</navigation>

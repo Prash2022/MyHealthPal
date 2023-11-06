@@ -69,7 +69,7 @@ public class CartLabActivity extends AppCompatActivity {
         }
         tvTotal.setText("Total Cost : "+totalAmount);
 
-        list =new ArrayList();
+        list = new ArrayList();
         for(int i=0;i<packages.length;i++){
             item=new HashMap<String,String>();
             item.put("line1",packages[i][0]);
@@ -86,9 +86,6 @@ public class CartLabActivity extends AppCompatActivity {
                 );
          lst.setAdapter(sa);
 
-
-
-
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,7 +97,7 @@ public class CartLabActivity extends AppCompatActivity {
         btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it=new Intent(CartLabActivity.this,LabTestBookActivity.class);
+                Intent it = new Intent(CartLabActivity.this,LabTestBookActivity.class);
                 it.putExtra("price",tvTotal.getText());
                 it.putExtra("date",dateButton.getText());
                 it.putExtra("price",timeButton.getText());
@@ -113,7 +110,6 @@ public class CartLabActivity extends AppCompatActivity {
         dateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 datePickerDialog.show();
             }
         });
@@ -144,7 +140,7 @@ public class CartLabActivity extends AppCompatActivity {
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        int style =AlertDialog.THEME_HOLO_DARK;
+        int style = AlertDialog.THEME_HOLO_DARK;
         datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
         datePickerDialog.getDatePicker().setMinDate(cal.getTimeInMillis() + 86400000);
     }
@@ -162,8 +158,8 @@ public class CartLabActivity extends AppCompatActivity {
         int hour = cal.get(Calendar.HOUR);
         int minute = cal.get(Calendar.MINUTE);
 
-        int style =AlertDialog.THEME_HOLO_DARK;
-        timePickerDialog =new TimePickerDialog(this,style,timeSetListener,hour,minute,true);
+        int style = AlertDialog.THEME_HOLO_DARK;
+        timePickerDialog = new TimePickerDialog(this,style,timeSetListener,hour,minute,true);
     }
 
 

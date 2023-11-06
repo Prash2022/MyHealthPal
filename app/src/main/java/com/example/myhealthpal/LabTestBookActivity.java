@@ -14,37 +14,43 @@ import android.widget.Toast;
 public class LabTestBookActivity extends AppCompatActivity {
 
     EditText edname,edaddress,edcontact,edpincode;
-    Button btnBooking;
+    Button btnBooking, btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lab_test_book);
 
-        edname=findViewById(R.id.editTextLTBFullName);
-        edaddress=findViewById(R.id.editTextLTBAddress);
-        edcontact=findViewById(R.id.editTextLTBContact);
-        edpincode=findViewById(R.id.editTextLTBPincode);
-        btnBooking=findViewById(R.id.buttonLTBBooking);
+        edname =findViewById(R.id.editTextLTBFullName);
+        edaddress = findViewById(R.id.editTextLTBAddress);
+        edcontact = findViewById(R.id.editTextLTBContact);
+        edpincode = findViewById(R.id.editTextLTBPincode);
+        btnBooking = findViewById(R.id.buttonLTBBooking);
+        btnBack = findViewById(R.id.buttonLTBBack);
 
-        Intent intent=getIntent();
-        String[] price=intent.getStringExtra("price").toString().split(java.util.regex.Pattern.quote(":"));
-        String date=intent.getStringExtra("date");
-        String time=intent.getStringExtra("time");
+        Intent intent = getIntent();
+        String[] price = intent.getStringExtra("price").toString().split(java.util.regex.Pattern.quote(":"));
+        String date = intent.getStringExtra("date");
+        String time = intent.getStringExtra("time");
 
         btnBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPreferences=getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
-                String username=sharedPreferences.getString("username","").toString();
+                SharedPreferences sharedPreferences = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
+                String username = sharedPreferences.getString("username","").toString();
 
-                Database db=new Database(getApplicationContext(),"healthcare",null,1);
+                Database db = new Database(getApplicationContext(),"healthcare",null,1);
                 db.addOrder(username,edname.getText().toString(),edaddress.getText().toString(),edcontact.getText().toString(),Integer.parseInt(edpincode.getText().toString()),date.toString(),time.toString(),Float.parseFloat(price[1].toString()),"lab");
                 db.removeCart(username,"lab");
                 Toast.makeText(getApplicationContext(),"Your booking is done successfully",Toast.LENGTH_LONG).show();
                 startActivity(new Intent(LabTestBookActivity.this,HomeActivity.class));
             }
         });
-
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LabTestBookActivity.this, CartLabActivity.class));
+            }
+        });
 
     }
 }
