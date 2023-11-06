@@ -47,12 +47,12 @@ public class LabTestDetailsActivity extends AppCompatActivity {
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedpreferences=getSharedPreferences("shares_prefs", Context.MODE_PRIVATE);
-                String username= sharedpreferences.getString("username","").toString();
-                String product=tvPackageName.getText().toString();
-                float price=Float.parseFloat(intent.getStringExtra("text3").toString());
+                SharedPreferences sharedpreferences = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
+                String username = sharedpreferences.getString("username","").toString();
+                String product = tvPackageName.getText().toString();
+                float price = Float.parseFloat(intent.getStringExtra("text3").toString());
 
-                Database db=new Database(getApplicationContext(),"healthcare",null,1);
+                Database db = new Database(getApplicationContext(),"healthcare",null,1);
 
                 if(db.checkCart(username,product)==1){
                     Toast.makeText(getApplicationContext(),"Product Already Added",Toast.LENGTH_SHORT).show();
