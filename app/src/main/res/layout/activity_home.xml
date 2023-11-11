@@ -219,11 +219,11 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/info"/>
+                    android:src="@drawable/person"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="LOG OUT"
+                    android:text="MY ACCOUNT"
                     android:textAlignment="center"
                     android:textColor="@color/colorRed"
                     android:textStyle="bold"/>

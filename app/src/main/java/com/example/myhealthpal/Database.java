@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -37,9 +38,9 @@ public class Database extends SQLiteOpenHelper {
         cv.put("username", username);
         cv.put("email", email);
         cv.put("password", password);
-        cv.put("fullname", "");
-        cv.put("address", "");
-        cv.put("phone", "");
+        cv.put("fullname", " ");
+        cv.put("address", " ");
+        cv.put("phone", " ");
         SQLiteDatabase db = getWritableDatabase();
         db.insert("users", null, cv);
         db.close();
@@ -165,20 +166,32 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public ArrayList getUserData(String user){
+
         ArrayList<String> arr = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
 
-        Cursor c = db.rawQuery("SELECT * FROM users WHERE username='" + user + "'", null);
-        if(c.moveToFirst()){
-            do{
-                String username = c.getString(1);
-                String email = c.getString(2);
-                String fullname = c.getString(4);
-                String address = c.getString(5);
-                String phone = c.getString(6);
-                arr.add(username + "$" + email + "$" + fullname + "$" + address + "$" + phone);
-            }while(c.moveToNext());
+        Cursor c = db.rawQuery("SELECT email, fullname, address, phone FROM users WHERE username=?", new String[]{user});
+
+// Check if the cursor has data and move to the first row
+        if (c.moveToFirst()) {
+            int emailIndex = c.getColumnIndex("email");
+            int fullnameIndex = c.getColumnIndex("fullname");
+            int addressIndex = c.getColumnIndex("address");
+            int phoneIndex = c.getColumnIndex("phone");
+
+            // Check if the column exists in the cursor before accessing its value
+            if (emailIndex != -1) {
+                String email = c.getString(emailIndex);
+                // Similarly, check for other columns
+                String fullname = (fullnameIndex != -1) ? c.getString(fullnameIndex) : "";
+                String address = (addressIndex != -1) ? c.getString(addressIndex) : "";
+                String phone = (phoneIndex != -1) ? c.getString(phoneIndex) : "";
+                Log.d("Trying to get data ", email);
+                // Add the values to the ArrayList
+                arr.add(email + "$" + fullname + "$" + address + "$" + phone);
+            }
         }
+        c.close();
         db.close();
         return arr;
     }

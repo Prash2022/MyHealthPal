@@ -19,16 +19,13 @@ public class HomeActivity extends AppCompatActivity {
 
         SharedPreferences sharedpreferences = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
         String username = sharedpreferences.getString("username","").toString();
-        Toast.makeText(getApplicationContext(),"Welcome "+username, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Welcome " + username, Toast.LENGTH_SHORT).show();
 
         CardView exit = findViewById(R.id.cardExit);
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.clear();
-                editor.apply();
-                startActivity(new Intent(HomeActivity.this,LoginActivity.class));
+                startActivity(new Intent(HomeActivity.this, EditProfileActivity.class));
             }
         });
 

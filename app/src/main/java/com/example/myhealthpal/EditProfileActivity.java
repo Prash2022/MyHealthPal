@@ -83,10 +83,18 @@ public class EditProfileActivity extends AppCompatActivity {
 
         if (!userData.isEmpty()) {
             String[] userFields = userData.get(0).split("\\$");
-            etEmail.setText(userFields[1]);
-            etFullName.setText(userFields[2]);
-            etAddress.setText(userFields[3]);
-            etPhone.setText(userFields[4]);
+            etEmail.setText(userFields[0]);
+            if(!userFields[1].equals(" ")) {
+                etFullName.setText(userFields[1]);
+            }
+            if(!userFields[2].equals(" ")) {
+                etAddress.setText(userFields[2]);
+            }
+            if(!userFields[3].equals(" ")) {
+                etPhone.setText(userFields[3]);
+            }
+
+
         }
     }
 

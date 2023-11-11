@@ -24,8 +24,11 @@ public class BookAppointmentActivity extends AppCompatActivity {
     EditText ed1,ed2,ed3,ed4;
     TextView tv;
     private DatePickerDialog datePickerDialog;
+    // Inside initDatePicker() method
+
     private TimePickerDialog timePickerDialog;
     private Button dateButton, timeButton, btnBook, btnBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,14 +62,8 @@ public class BookAppointmentActivity extends AppCompatActivity {
         ed3.setText(contact);
         ed4.setText("Cons fees: " + fees + "$");
 
-        //datePicker
         initDatePicker();
-        dateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                datePickerDialog.show();
-            }
-        });
+        datePickerDialog.show();
 
         //timePicker
         initTimePicker();
@@ -116,7 +113,8 @@ public class BookAppointmentActivity extends AppCompatActivity {
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        datePickerDialog = new DatePickerDialog(this, 0, dateSetListener, year, month, day);
+
+        datePickerDialog = new DatePickerDialog(this, R.style.DatePickerStyle, dateSetListener, year, month, day);
         datePickerDialog.getDatePicker().setMinDate(cal.getTimeInMillis() + 86400000);
     }
 

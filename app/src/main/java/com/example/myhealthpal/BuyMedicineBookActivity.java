@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class BuyMedicineBookActivity extends AppCompatActivity {
     EditText edname, edaddress, edcontact, edpincode;
     Button btnBooking, btnBack;
@@ -27,16 +29,18 @@ public class BuyMedicineBookActivity extends AppCompatActivity {
         btnBooking = findViewById(R.id.buttonBMBBooking);
         btnBack = findViewById(R.id.buttonBMBBack);
 
+        SharedPreferences sharedpreferences = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
+        String username = sharedpreferences.getString("username", "").toString();
+
         Intent intent = getIntent();
         String[] price = intent.getStringExtra("price").toString().split(java.util.regex.Pattern.quote(":"));
         String date = intent.getStringExtra("date");
 
+        displayUserData(username);
+
         btnBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedpreferences = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
-                String username = sharedpreferences.getString("username", "").toString();
-
                 Database db = new Database(getApplicationContext(),"healthpal",null,1);
                 try {
                     db.addOrder(username, edname.getText().toString(), edaddress.getText().toString(),
@@ -58,5 +62,22 @@ public class BuyMedicineBookActivity extends AppCompatActivity {
                 startActivity(new Intent(BuyMedicineBookActivity.this, CartBuyMedicineActivity.class));
             }
         });
+    }
+    private void displayUserData(String username) {
+        Database db = new Database(this, "healthpal", null, 1);
+        ArrayList<String> userData = db.getUserData(username);
+
+        if (!userData.isEmpty()) {
+            String[] userFields = userData.get(0).split("\\$");
+            if(!userFields[1].equals(" ")) {
+                edname.setText(userFields[1]);
+            }
+            if(!userFields[2].equals(" ")) {
+                edaddress.setText(userFields[2]);
+            }
+            if(!userFields[3].equals(" ")) {
+                edcontact.setText(userFields[3]);
+            }
+        }
     }
 }
