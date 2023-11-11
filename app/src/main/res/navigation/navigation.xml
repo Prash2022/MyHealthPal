@@ -60,4 +60,39 @@
         android:name="com.example.myhealthpal.LabTestBookActivity"
         android:label="activity_lab_test_book"
         tools:layout="@layout/activity_lab_test_book" />
+    <activity
+        android:id="@+id/healthArticlesDetailsActivity"
+        android:name="com.example.myhealthpal.HealthArticlesDetailsActivity"
+        android:label="activity_health_articles_details"
+        tools:layout="@layout/activity_health_articles_details" />
+    <activity
+        android:id="@+id/healthArticlesActivity"
+        android:name="com.example.myhealthpal.HealthArticlesActivity"
+        android:label="activity_health_articles"
+        tools:layout="@layout/activity_health_articles" />
+    <activity
+        android:id="@+id/buyMedicineActivity"
+        android:name="com.example.myhealthpal.BuyMedicineActivity"
+        android:label="activity_buy_medicine"
+        tools:layout="@layout/activity_buy_medicine" />
+    <activity
+        android:id="@+id/buyMedicineDetailsActivity"
+        android:name="com.example.myhealthpal.BuyMedicineDetailsActivity"
+        android:label="activity_buy_medicine_details"
+        tools:layout="@layout/activity_buy_medicine_details" />
+    <activity
+        android:id="@+id/cartBuyMedicineActivity"
+        android:name="com.example.myhealthpal.CartBuyMedicineActivity"
+        android:label="activity_cart_buy_medicine"
+        tools:layout="@layout/activity_cart_buy_medicine" />
+    <activity
+        android:id="@+id/buyMedicineBookActivity"
+        android:name="com.example.myhealthpal.BuyMedicineBookActivity"
+        android:label="activity_buy_medicine_book"
+        tools:layout="@layout/activity_buy_medicine_book" />
+    <activity
+        android:id="@+id/editProfileActivity"
+        android:name="com.example.myhealthpal.EditProfileActivity"
+        android:label="activity_edit_profile"
+        tools:layout="@layout/activity_edit_profile" />
 </navigation>

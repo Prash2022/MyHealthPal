@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,10 +15,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
 public class BookAppointmentActivity extends AppCompatActivity {
+
     EditText ed1,ed2,ed3,ed4;
     TextView tv;
     private DatePickerDialog datePickerDialog;
@@ -26,6 +30,7 @@ public class BookAppointmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_appointment);
+
         tv = findViewById(R.id.textViewAppTitle);
         ed1 = findViewById(R.id.editTextAppFullName);
         ed2 = findViewById(R.id.editTextAppAddress);
@@ -52,7 +57,7 @@ public class BookAppointmentActivity extends AppCompatActivity {
         ed1.setText(fullname);
         ed2.setText(address);
         ed3.setText(contact);
-        ed4.setText("Cons fees: " + fees+"$");
+        ed4.setText("Cons fees: " + fees + "$");
 
         //datePicker
         initDatePicker();
@@ -82,7 +87,18 @@ public class BookAppointmentActivity extends AppCompatActivity {
         btnBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              //keep btnBook code as it is for now, then remove this comment later
+                SharedPreferences sharedpreferences = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
+                String username = sharedpreferences.getString("username","").toString();
+                Database db = new Database(getApplicationContext(),"healthpal",null,1);
+                if (db.checkAppointmentExists(username, title + " => " + fullname, address, contact,
+                        dateButton.getText().toString(), timeButton.getText().toString()) == 1) {
+                    Toast.makeText(getApplicationContext(),"Appointmnet already booked", Toast.LENGTH_LONG).show();
+                } else {
+                    db.addOrder(username,title + " => " + fullname, address, contact,0,
+                            dateButton.getText().toString(), timeButton.getText().toString(), Float.parseFloat(fees),"appointment");
+                    Toast.makeText(getApplicationContext(),"Your appointmnet is done successfully", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(BookAppointmentActivity.this, HomeActivity.class));
+                }
             }
         });
 
@@ -91,8 +107,8 @@ public class BookAppointmentActivity extends AppCompatActivity {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                i1=i1+1;
-                dateButton.setText(i2+"/"+i1+"/"+i);
+                i1 = i1 + 1;
+                dateButton.setText(i2 + "/" + i1 + "/" + i);
             }
         };
         Calendar cal = Calendar.getInstance();
@@ -100,9 +116,8 @@ public class BookAppointmentActivity extends AppCompatActivity {
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        int style = AlertDialog.THEME_HOLO_DARK;
-        datePickerDialog = new DatePickerDialog(this,style, dateSetListener, year, month, day);
-        datePickerDialog.getDatePicker().setMinDate(cal.getTimeInMillis()+86400000);
+        datePickerDialog = new DatePickerDialog(this, 0, dateSetListener, year, month, day);
+        datePickerDialog.getDatePicker().setMinDate(cal.getTimeInMillis() + 86400000);
     }
 
     public void initTimePicker(){
@@ -113,10 +128,9 @@ public class BookAppointmentActivity extends AppCompatActivity {
             }
         };
         Calendar cal = Calendar.getInstance();
-        int hrs = cal.get(Calendar.HOUR);
-        int mins = cal.get(Calendar.MINUTE);
+        int hour = cal.get(Calendar.HOUR);
+        int minute = cal.get(Calendar.MINUTE);
 
-        int style = AlertDialog.THEME_HOLO_DARK;
-        timePickerDialog = new TimePickerDialog(this,style, timeSetListener, hrs, mins, true);
+        timePickerDialog = new TimePickerDialog(this, 0, timeSetListener, hour, minute, true);
     }
 }

@@ -13,6 +13,7 @@ public class FindDoctorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_doctor);
+
         CardView exit = findViewById(R.id.cardFDBack);
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +41,6 @@ public class FindDoctorActivity extends AppCompatActivity {
                 startActivity(it);
             }
         });
-
         CardView dentist = findViewById(R.id.cardFDDentist);
         dentist.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +50,6 @@ public class FindDoctorActivity extends AppCompatActivity {
                 startActivity(it);
             }
         });
-
         CardView surgeon = findViewById(R.id.cardFDSurgeon);
         surgeon.setOnClickListener(new View.OnClickListener() {
             @Override

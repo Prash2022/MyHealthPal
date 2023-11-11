@@ -9,6 +9,7 @@
     <color name="color4">#FF386C5F</color>
     <color name="inputBg">#A4FFFEFE</color>
     <color name="icons">#68FFFEFE</color>
+    <color name="inputBgFocus">#F2FFFEFE</color>
     <color name="colorWhite">#FFFFFF</color>
 
 

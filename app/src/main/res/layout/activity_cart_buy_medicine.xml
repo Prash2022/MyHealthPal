@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
-    tools:context=".CartLabActivity">
+    tools:context=".CartBuyMedicineActivity">
 
     <TextView
-        android:id="@+id/textViewLDName"
+        android:id="@+id/textViewDDName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="24*7 HEALTHCARE"
+        android:text="24*7 Healthcare"
         android:textColor="@color/color2"
         android:textSize="34sp"
         android:textStyle="bold"
@@ -22,24 +22,24 @@
         app:layout_constraintVertical_bias="0.045" />
 
     <TextView
-        android:id="@+id/textViewODSubTitle"
+        android:id="@+id/textViewDDSubTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Deliver Location: Vancouver"
+        android:text="Deliver Location : Vancouver"
         android:textColor="@color/colorWhite"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLDName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDDName"
         app:layout_constraintVertical_bias="0.028" />
 
     <TextView
-        android:id="@+id/textViewODTitle"
+        android:id="@+id/textViewBMCartTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lab Test Cart Items"
+        android:text="Medicines and Packages"
         android:textColor="@color/color4"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -47,11 +47,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLDName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDDName"
         app:layout_constraintVertical_bias="0.087" />
 
     <ListView
-        android:id="@+id/listViewOD"
+        android:id="@+id/listViewBMCart"
         android:layout_width="363dp"
         android:layout_height="324dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -61,10 +61,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewCartTotalCost"
+        android:id="@+id/textViewBMCartTotalCost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Cost: 1298/-"
+        android:text="Total Cost : 2000/-"
         android:textColor="@color/color2"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,63 +75,30 @@
         app:layout_constraintVertical_bias="0.811" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
         android:text="Select Deliver Date"
         android:textColor="@color/color2"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.843" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewBMCartTotalCost" />
 
-    <TextView
-        android:id="@+id/textView6"
+    <Button
+        android:id="@+id/buttonBMCartDate"
+        style="?android:spinnerStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Deliver Time"
-        android:textColor="@color/color2"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="4dp"
+        android:text="27/10/2022"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.962"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.846" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
 
     <Button
-        android:id="@+id/buttonCartDate"
-        style="?android:spinnerStyle"
-        android:layout_width="122dp"
-        android:layout_height="48dp"
-        android:text="12/12/2023"
-        android:textColor="@color/colorWhite"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.916" />
-
-    <Button
-        android:id="@+id/buttonCartTime"
-        style="?android:spinnerStyle"
-        android:layout_width="122dp"
-        android:layout_height="48dp"
-        android:text="10:00"
-        android:textColor="@color/colorWhite"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.968"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.919" />
-
-    <Button
-        android:id="@+id/buttonCartCheckout"
+        android:id="@+id/buttonBMCartCheckout"
         android:layout_width="153dp"
         android:layout_height="48dp"
         android:layout_marginBottom="4dp"
@@ -143,7 +110,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonODBack"
+        android:id="@+id/buttonBMCartBack"
         android:layout_width="113dp"
         android:layout_height="48dp"
         android:layout_marginBottom="4dp"

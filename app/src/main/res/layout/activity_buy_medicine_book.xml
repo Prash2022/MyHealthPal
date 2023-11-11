@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
-    tools:context=".LabTestBookActivity">
+    tools:context=".BuyMedicineBookActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -19,13 +19,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.057" />
+        app:layout_constraintVertical_bias="0.053" />
 
     <TextView
-        android:id="@+id/textViewAppTitle"
+        android:id="@+id/textViewBMBTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please Fill All Details for Booking"
+        android:text="Please Fill All Details for Your Order"
         android:textColor="@color/color4"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -36,7 +36,7 @@
         app:layout_constraintVertical_bias="0.036" />
 
     <EditText
-        android:id="@+id/editTextLTBFullName"
+        android:id="@+id/editTextBMBFullName"
         android:layout_width="344dp"
         android:layout_height="56dp"
         android:layout_marginTop="28dp"
@@ -56,11 +56,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAppTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBMBTitle"
         app:layout_constraintVertical_bias="0.046" />
 
     <EditText
-        android:id="@+id/editTextLTBAddress"
+        android:id="@+id/editTextBMBAddress"
         android:layout_width="344dp"
         android:layout_height="56dp"
         android:layout_marginTop="10dp"
@@ -80,11 +80,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextLTBFullName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextBMBFullName"
         app:layout_constraintVertical_bias="0.027" />
 
     <EditText
-        android:id="@+id/editTextLTBPincode"
+        android:id="@+id/editTextBMBPincode"
         android:layout_width="344dp"
         android:layout_height="56dp"
         android:layout_marginTop="10dp"
@@ -100,14 +100,14 @@
         android:paddingBottom="10dp"
         android:textColor="@color/color2"
         android:textColorHint="@color/colorWhite"
-        app:layout_constraintBottom_toTopOf="@+id/editTextLTBContact"
+        app:layout_constraintBottom_toTopOf="@+id/editTextBMBContact"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextLTBAddress"
+        app:layout_constraintTop_toBottomOf="@+id/editTextBMBAddress"
         app:layout_constraintVertical_bias="0.195" />
 
     <EditText
-        android:id="@+id/editTextLTBContact"
+        android:id="@+id/editTextBMBContact"
         android:layout_width="344dp"
         android:layout_height="56dp"
         android:layout_marginTop="10dp"
@@ -123,15 +123,15 @@
         android:paddingBottom="10dp"
         android:textColor="@color/color2"
         android:textColorHint="@color/colorWhite"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLTBBooking"
+        app:layout_constraintBottom_toTopOf="@+id/buttonBMBBooking"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextLTBPincode"
+        app:layout_constraintTop_toBottomOf="@+id/editTextBMBPincode"
         app:layout_constraintVertical_bias="1.0" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonLTBBooking"
+        android:id="@+id/buttonBMBBooking"
         android:layout_width="358dp"
         android:layout_height="63dp"
         android:layout_marginTop="10dp"
@@ -145,11 +145,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.431"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextLTBContact"
+        app:layout_constraintTop_toBottomOf="@+id/editTextBMBContact"
         app:layout_constraintVertical_bias="1.0" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonLTBBack"
+        android:id="@+id/buttonBMBBack"
         android:layout_width="358dp"
         android:layout_height="63dp"
         android:layout_marginTop="10dp"
@@ -163,7 +163,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.431"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextLTBContact"
+        app:layout_constraintTop_toBottomOf="@+id/editTextBMBContact"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

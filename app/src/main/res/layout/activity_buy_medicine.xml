@@ -5,53 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
-    tools:context=".LabTestActivity">
+    tools:context=".BuyMedicineActivity">
 
     <TextView
-        android:id="@+id/textViewLTName"
+        android:id="@+id/textViewBMName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="24*7 HEALTHCARE"
+        android:text="24*7 Healthcare"
         android:textColor="@color/color2"
-        android:textSize="34sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.045" />
+        app:layout_constraintVertical_bias="0.01999998" />
 
     <TextView
-        android:id="@+id/textViewLTTitle"
+        android:id="@+id/textViewBMTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Deliver Location: Vancouver"
+        android:text="Deliver Location : Vancouver"
         android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLTName"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textViewLTSubTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lab Test and Package"
-        android:textColor="@color/color4"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLTName"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewBMName"
+        app:layout_constraintVertical_bias="0.01999998" />
+
+    <TextView
+        android:id="@+id/textViewBMSubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buy Medicines"
+        android:textColor="@color/color4"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/listViewBM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBMTitle" />
 
     <ListView
-        android:id="@+id/listViewLT"
+        android:id="@+id/listViewBM"
         android:layout_width="347dp"
         android:layout_height="446dp"
         android:layout_margin="10dp"
@@ -61,10 +58,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLTTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewBMTitle" />
 
     <Button
-        android:id="@+id/buttonCartCheckout"
+        android:id="@+id/buttonBMGoToCart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/color4"
@@ -72,11 +69,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.136"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <Button
-        android:id="@+id/buttonODBack"
+        android:id="@+id/buttonBMBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/color4"
