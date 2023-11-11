@@ -31,7 +31,6 @@ public class DoctorDetailsActivity extends AppCompatActivity {
                     {"Doctor Name : Xing Liu", "Hospital Address: Surrey", "Exp: 12yrs", "Mobile No: 2365895674", "900"},
                     {"Doctor Name : Lou Jenny", "Hospital Address: Richmond", "Exp: 15yrs", "Mobile No: 2365895674", "1000"}
             };
-
     private String[][] doctor_details3 =
             {
                     {"Doctor Name : Nadiia Marchynska", "Hospital Address: Burnaby", "Exp: 5yrs", "Mobile No: 2365895674", "1100"},
@@ -73,6 +72,7 @@ public class DoctorDetailsActivity extends AppCompatActivity {
         Intent it = getIntent();
         String title = it.getStringExtra("title");
         tv.setText(title);
+
         if(title.compareTo("Family Physicians")==0)
             doctor_details = doctor_details1;
         else if(title.compareTo("Dietician")==0)
@@ -90,35 +90,36 @@ public class DoctorDetailsActivity extends AppCompatActivity {
                 startActivity(new Intent(DoctorDetailsActivity.this, FindDoctorActivity.class));
             }
         });
-    list = new ArrayList();
-    for(int i = 0; i < doctor_details.length; i++){
-        item = new HashMap<String, String>();
-        item.put("Line1", doctor_details[i][0]);
-        item.put("Line2", doctor_details[i][1]);
-        item.put("Line3", doctor_details[i][2]);
-        item.put("Line4", doctor_details[i][3]);
-        item.put("Line5", "Cons Fees: " +doctor_details[i][4] +"$");
-        list.add(item);
-    }
-    sa = new SimpleAdapter(this,list,
-            R.layout.multi_lines,
-            new String[]{"Line1","Line2","Line3","Line4","Line5"},
-            new int[]{R.id.line_a,R.id.line_b,R.id.line_c,R.id.line_d,R.id.line_e}
-            );
-    ListView lst = findViewById(R.id.listViewLT);
-    lst.setAdapter(sa);
-    lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Intent it = new Intent(DoctorDetailsActivity.this, BookAppointmentActivity.class);
-            it.putExtra("text1", title);
-            it.putExtra("text2", doctor_details[i][0]);
-            it.putExtra("text3", doctor_details[i][1]);
-            it.putExtra("text4", doctor_details[i][3]);
-            it.putExtra("text5", doctor_details[i][4]);
-            startActivity(it);
+
+        list = new ArrayList();
+        for(int i = 0; i < doctor_details.length; i++){
+            item = new HashMap<String, String>();
+            item.put("Line1", doctor_details[i][0]);
+            item.put("Line2", doctor_details[i][1]);
+            item.put("Line3", doctor_details[i][2]);
+            item.put("Line4", doctor_details[i][3]);
+            item.put("Line5", "Cons Fees: " + doctor_details[i][4] + "$");
+            list.add(item);
         }
-    });
+        sa = new SimpleAdapter(this,list,
+                R.layout.multi_lines,
+                new String[]{"Line1","Line2","Line3","Line4","Line5"},
+                new int[]{R.id.line_a,R.id.line_b,R.id.line_c,R.id.line_d,R.id.line_e}
+                );
+        ListView lst = findViewById(R.id.listViewLT);
+        lst.setAdapter(sa);
+        lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent it = new Intent(DoctorDetailsActivity.this, BookAppointmentActivity.class);
+                it.putExtra("text1", title);
+                it.putExtra("text2", doctor_details[i][0]);
+                it.putExtra("text3", doctor_details[i][1]);
+                it.putExtra("text4", doctor_details[i][3]);
+                it.putExtra("text5", doctor_details[i][4]);
+                startActivity(it);
+            }
+        });
     }
 }
 

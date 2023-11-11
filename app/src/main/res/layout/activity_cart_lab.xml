@@ -7,32 +7,33 @@
     android:background="@drawable/background2"
     tools:context=".CartLabActivity">
 
-    <Button
-        android:id="@+id/buttonCartTime"
-        style="?android:spinnerStyle"
-        android:layout_width="122dp"
-        android:layout_height="48dp"
-        android:text="10:00"
-        android:textColor="@color/colorWhite"
-        android:textSize="12sp"
+    <TextView
+        android:id="@+id/textViewLDName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="24*7 HEALTHCARE"
+        android:textColor="@color/color2"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.968"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.919" />
+        app:layout_constraintVertical_bias="0.045" />
 
-    <Button
-        android:id="@+id/buttonODBack"
-        android:layout_width="113dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="4dp"
-        android:backgroundTint="@color/color4"
-        android:text="BACK"
+    <TextView
+        android:id="@+id/textViewODSubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deliver Location: Vancouver"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.946"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLDName"
+        app:layout_constraintVertical_bias="0.028" />
 
     <TextView
         android:id="@+id/textViewODTitle"
@@ -49,45 +50,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewLDName"
         app:layout_constraintVertical_bias="0.087" />
 
-    <TextView
-        android:id="@+id/textViewLDName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="24*7 HEALTHCARE"
-        android:textColor="@color/color2"
-        android:textSize="34sp"
-        android:textStyle="bold"
+    <ListView
+        android:id="@+id/listViewOD"
+        android:layout_width="363dp"
+        android:layout_height="324dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.045" />
-
-    <TextView
-        android:id="@+id/textViewCart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Deliver Location: Vancouver"
-        android:textColor="@color/colorWhite"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLDName"
-        app:layout_constraintVertical_bias="0.028" />
-
-    <Button
-        android:id="@+id/buttonCartCheckout"
-        android:layout_width="153dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="4dp"
-        android:backgroundTint="@color/color4"
-        android:text="CHECKOUT"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.025"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewCartTotalCost"
@@ -129,16 +100,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.846" />
 
-    <ListView
-        android:id="@+id/listViewOD"
-        android:layout_width="363dp"
-        android:layout_height="324dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/buttonCartDate"
         style="?android:spinnerStyle"
@@ -153,5 +114,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.916" />
+
+    <Button
+        android:id="@+id/buttonCartTime"
+        style="?android:spinnerStyle"
+        android:layout_width="122dp"
+        android:layout_height="48dp"
+        android:text="10:00"
+        android:textColor="@color/colorWhite"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.968"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.919" />
+
+    <Button
+        android:id="@+id/buttonCartCheckout"
+        android:layout_width="153dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/color4"
+        android:text="CHECKOUT"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonODBack"
+        android:layout_width="113dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/color4"
+        android:text="BACK"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.946"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
