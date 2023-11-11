@@ -62,9 +62,14 @@ public class BookAppointmentActivity extends AppCompatActivity {
         ed3.setText(contact);
         ed4.setText("Cons fees: " + fees + "$");
 
+        //datePicker
         initDatePicker();
-        datePickerDialog.show();
-
+        dateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                datePickerDialog.show();
+            }
+        });
         //timePicker
         initTimePicker();
         timeButton.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +119,7 @@ public class BookAppointmentActivity extends AppCompatActivity {
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
 
-        datePickerDialog = new DatePickerDialog(this, R.style.DatePickerStyle, dateSetListener, year, month, day);
+        datePickerDialog = new DatePickerDialog(this, 0, dateSetListener, year, month, day);
         datePickerDialog.getDatePicker().setMinDate(cal.getTimeInMillis() + 86400000);
     }
 

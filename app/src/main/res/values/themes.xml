@@ -9,15 +9,4 @@
     </style>
 
     <style name="Theme.MyHealthPal" parent="Base.Theme.MyHealthPal" />
-
-    <style name="DatePickerTheme" parent="@android:style/Widget.DatePicker">
-        <item name="android:datePickerStyle">@style/DatePickerStyle</item>
-    </style>
-
-    <style name="DatePickerStyle" parent="@android:style/Widget.DatePicker">
-        <!-- Customize your DatePicker appearance here -->
-        <item name="android:headerBackground">@color/color3</item>
-        <item name="android:calendarTextColor">@color/color4</item>
-        <!-- Add more attributes as needed -->
-    </style>
 </resources>
