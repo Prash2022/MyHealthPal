@@ -15,4 +15,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "MyHealthPal"
 include(":app")
- 
+//need to try adding library here
+//include(":unityLibrary")
+//project(":unityLibrary").projectDir = new File("..\\UnityProject\\androidBuild\\unityLibrary")
