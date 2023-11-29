@@ -1,11 +1,12 @@
 package com.example.myhealthpal;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ public class BookAppointmentActivity extends AppCompatActivity {
 
     private TimePickerDialog timePickerDialog;
     private Button dateButton, timeButton, btnBook, btnBack;
+    AlertDialog.Builder alertBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +100,22 @@ public class BookAppointmentActivity extends AppCompatActivity {
                 } else {
                     db.addOrder(username,title + " => " + fullname, address, contact,0,
                             dateButton.getText().toString(), timeButton.getText().toString(), Float.parseFloat(fees),"appointment");
-                    Toast.makeText(getApplicationContext(),"Your appointmnet is done successfully", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(BookAppointmentActivity.this, HomeActivity.class));
+                    Toast.makeText(getApplicationContext(),"Your appointmnet is booked successfully", Toast.LENGTH_LONG).show();
+                    alertBuilder = new AlertDialog.Builder(BookAppointmentActivity.this);
+                    alertBuilder.setTitle("Game Time")
+                            .setMessage("Wanna Play While Waiting?")
+                            .setCancelable(true)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent i = new Intent(BookAppointmentActivity.this, EditProfileActivity.class);
+                                    startActivity(i);
+
+                                }
+                            })
+                            .setNegativeButton("NO", null);
+                    alertBuilder.create().show();
+                    //startActivity(new Intent(BookAppointmentActivity.this, HomeActivity.class));
                 }
             }
         });
