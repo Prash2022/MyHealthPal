@@ -164,7 +164,7 @@ public class BuyMedicineActivity extends AppCompatActivity {
                 }
 
                 if (originalHashMap.get("line1").toLowerCase().contains(keyword.toLowerCase())) {
-                    // 在 HashMap 中新增原始的索引
+                   
                     newItem.put("originalIndex", String.valueOf(i));
                     filteredList.add(newItem);
                 }
