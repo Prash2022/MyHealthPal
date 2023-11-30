@@ -201,7 +201,7 @@ public class BuyMedicineActivity extends AppCompatActivity {
     private void addToCart() {
         HashMap<String, String> selectedItem;
 
-        // 使用 filteredList 來確定商品是否已經在購物車中
+
         if (filteredList != null && selectedPosition != ListView.INVALID_POSITION && selectedPosition < filteredList.size()) {
             selectedItem = filteredList.get(selectedPosition);
         } else {
@@ -213,19 +213,19 @@ public class BuyMedicineActivity extends AppCompatActivity {
         String productName = selectedItem.get("line1");
         float productPrice = Float.parseFloat(selectedItem.get("line5").replaceAll("[^\\d.]+|\\.(?!\\d)", ""));
 
-        // 假設你有一個有效的使用者名稱
-        String username = "your_username"; // 這裡需要設定有效的使用者名稱
 
-        // 檢查商品是否已經在購物車中
+        String username = "your_username";
+
+
         Database db = new Database(getApplicationContext(), "healthpal", null, 1);
         if (db.checkCart(username, productName) == 1) {
             Toast.makeText(BuyMedicineActivity.this, "Product Already Added", Toast.LENGTH_SHORT).show();
         } else {
-            // 商品不在購物車中，可以添加
+
             db.addCart(username, productName, productPrice, "medicine");
             Toast.makeText(BuyMedicineActivity.this, "Record Inserted to Cart", Toast.LENGTH_SHORT).show();
 
-            // 開始 CartBuyMedicineActivity 之前，確保將商品信息傳遞給它
+
             Intent cartIntent = new Intent(BuyMedicineActivity.this, CartBuyMedicineActivity.class);
             cartIntent.putExtra("productName", productName);
             cartIntent.putExtra("productPrice", productPrice);
