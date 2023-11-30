@@ -2,18 +2,30 @@ package com.example.myhealthpal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BuyMedicineActivity extends AppCompatActivity {
+
+    private String username;
+
+    private int selectedPosition = ListView.INVALID_POSITION;
+
+    private ArrayList<HashMap<String, String>> filteredList;
+
     private String[][] packages =
             {
                     {"Uprise-D3 1000IU Capsule", "", "", "", "50"},
@@ -48,6 +60,7 @@ public class BuyMedicineActivity extends AppCompatActivity {
     };
 
     HashMap<String,String> item;
+    private int i;
     ArrayList list;
     SimpleAdapter sa;
     ListView lst;
@@ -61,10 +74,21 @@ public class BuyMedicineActivity extends AppCompatActivity {
         lst = findViewById(R.id.listViewBM);
         btnBack = findViewById(R.id.buttonBMBack);
         btnGoToCart = findViewById(R.id.buttonBMGoToCart);
+        lst = findViewById(R.id.listViewBM);
+
+        lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.d("AddToCart", "Item clicked at position: " + i);
+                selectedPosition = i;
+                addToCart();
+            }
+        });
 
         btnGoToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                addToCart();
                 startActivity(new Intent(BuyMedicineActivity.this, CartBuyMedicineActivity.class));
             }
         });
@@ -103,5 +127,121 @@ public class BuyMedicineActivity extends AppCompatActivity {
                 startActivity(it);
             }
         });
+
+        final SearchView searchView = findViewById(R.id.searchViewBM);
+
+
+        filteredList = new ArrayList<>(list);
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText);
+                return true;
+            }
+        });
     }
+
+    private void filterList(String keyword) {
+        filteredList.clear();
+
+        for (int i = 0; i < list.size(); i++) {
+            Object originalItem = list.get(i);
+
+            if (originalItem instanceof HashMap) {
+                HashMap<String, String> originalHashMap = (HashMap<String, String>) originalItem;
+                HashMap<String, String> newItem = new HashMap<>();
+
+                for (String key : originalHashMap.keySet()) {
+                    String value = originalHashMap.get(key);
+                    newItem.put(key, value);
+                }
+
+                if (originalHashMap.get("line1").toLowerCase().contains(keyword.toLowerCase())) {
+                    // 在 HashMap 中新增原始的索引
+                    newItem.put("originalIndex", String.valueOf(i));
+                    filteredList.add(newItem);
+                }
+            }
+        }
+
+        sa = new SimpleAdapter(this, filteredList,
+                R.layout.multi_lines,
+                new String[]{"line1", "line2", "line3", "line4", "line5"},
+                new int[]{R.id.line_a, R.id.line_b, R.id.line_c, R.id.line_d, R.id.line_e});
+
+        lst.setAdapter(sa);
+
+        lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent it = new Intent(BuyMedicineActivity.this, BuyMedicineDetailsActivity.class);
+
+                // 取得原始的索引
+                int originalIndex = Integer.parseInt(filteredList.get(i).get("originalIndex"));
+
+                it.putExtra("text1", packages[originalIndex][0]);
+                it.putExtra("text2", package_details[originalIndex]);
+                it.putExtra("text3", packages[originalIndex][4]);
+                startActivity(it);
+            }
+        });
+    }
+
+
+
+
+
+    private void addToCart() {
+        HashMap<String, String> selectedItem;
+
+        // 使用 filteredList 來確定商品是否已經在購物車中
+        if (filteredList != null && selectedPosition != ListView.INVALID_POSITION && selectedPosition < filteredList.size()) {
+            selectedItem = filteredList.get(selectedPosition);
+        } else {
+            Log.e("AddToCart", "Invalid selectedPosition or filteredList is null.");
+            Toast.makeText(BuyMedicineActivity.this, "Please select an item.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String productName = selectedItem.get("line1");
+        float productPrice = Float.parseFloat(selectedItem.get("line5").replaceAll("[^\\d.]+|\\.(?!\\d)", ""));
+
+        // 假設你有一個有效的使用者名稱
+        String username = "your_username"; // 這裡需要設定有效的使用者名稱
+
+        // 檢查商品是否已經在購物車中
+        Database db = new Database(getApplicationContext(), "healthpal", null, 1);
+        if (db.checkCart(username, productName) == 1) {
+            Toast.makeText(BuyMedicineActivity.this, "Product Already Added", Toast.LENGTH_SHORT).show();
+        } else {
+            // 商品不在購物車中，可以添加
+            db.addCart(username, productName, productPrice, "medicine");
+            Toast.makeText(BuyMedicineActivity.this, "Record Inserted to Cart", Toast.LENGTH_SHORT).show();
+
+            // 開始 CartBuyMedicineActivity 之前，確保將商品信息傳遞給它
+            Intent cartIntent = new Intent(BuyMedicineActivity.this, CartBuyMedicineActivity.class);
+            cartIntent.putExtra("productName", productName);
+            cartIntent.putExtra("productPrice", productPrice);
+            startActivity(cartIntent);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }

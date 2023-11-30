@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
@@ -22,6 +23,7 @@ import java.util.HashMap;
 
 public class CartBuyMedicineActivity extends AppCompatActivity {
     HashMap<String,String> item;
+    private int selectedPosition = ListView.INVALID_POSITION;
     ArrayList list;
     SimpleAdapter sa;
     TextView tvTotal;
@@ -35,6 +37,8 @@ public class CartBuyMedicineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart_buy_medicine);
 
+        getIntent().removeExtra("productName");
+        getIntent().removeExtra("productPrice");
         dateButton = findViewById(R.id.buttonBMCartDate);
         btnCheckout = findViewById(R.id.buttonBMCartCheckout);
         btnBack = findViewById(R.id.buttonBMCartBack);
@@ -97,6 +101,8 @@ public class CartBuyMedicineActivity extends AppCompatActivity {
             }
         });
 
+
+
         //datepicker
         initDatePicker();
         dateButton.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +111,14 @@ public class CartBuyMedicineActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+
+        if (getIntent().hasExtra("productName") && getIntent().hasExtra("productPrice")) {
+            String productName = getIntent().getStringExtra("productName");
+            float productPrice = getIntent().getFloatExtra("productPrice", 0);
+
+            // Add the product to the cart list
+            db.addCart(username, productName, productPrice, "medicine");
+        }
     }
 
     private void initDatePicker(){

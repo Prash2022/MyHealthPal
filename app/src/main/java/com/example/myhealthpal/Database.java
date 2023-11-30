@@ -66,7 +66,14 @@ public class Database extends SQLiteOpenHelper {
         cv.put("price", price);
         cv.put("otype", otype);
         SQLiteDatabase db = getWritableDatabase();
-        db.insert("cart", null, cv);
+
+        long result = db.insert("cart", null, cv);
+        if (result == -1) {
+            Log.e("Database", "Failed to insert into cart: " + product);
+        } else {
+            Log.d("Database", "Inserted into cart: " + product);
+        }
+
         db.close();
     }
 
@@ -216,6 +223,21 @@ public class Database extends SQLiteOpenHelper {
         // Update the user record based on the username
         db.update("users", cv, "username=?", new String[]{username});
         db.close();
+    }
+
+    public int checkCartWithType(String username, String product, String otype){
+        int result = 0;
+        String str[] = new String[3];
+        str[0] = username;
+        str[1] = product;
+        str[2] = otype;
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("select*from cart where username=? and product=? and otype=?", str);
+        if(c.moveToFirst()){
+            result = 1;
+        }
+        db.close();
+        return result;
     }
 }
 

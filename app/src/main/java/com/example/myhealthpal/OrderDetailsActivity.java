@@ -63,10 +63,10 @@ public class OrderDetailsActivity extends AppCompatActivity {
         for(int i = 0; i < order_details.length; i++){
             item=new HashMap<String,String>();
             item.put("line1",order_details[i][0]);
-            item.put("line1",order_details[i][1]);
-            item.put("line1",order_details[i][2]);
-            item.put("line1",order_details[i][3]);
-            item.put("line1",order_details[i][4]);
+            item.put("line2",order_details[i][1]);
+            item.put("line3",order_details[i][2]);
+            item.put("line4",order_details[i][3]);
+            item.put("line5",order_details[i][4]);
             list.add(item);
         }
 
