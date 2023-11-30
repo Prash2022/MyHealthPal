@@ -42,24 +42,32 @@ public class BuyMedicineDetailsActivity extends AppCompatActivity {
             }
         });
 
+
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SharedPreferences sharedpreferences = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
-                String username = sharedpreferences.getString("username","").toString();
+                String username = sharedpreferences.getString("username", "").toString();
                 String product = tvSubTitle.getText().toString();
                 float price = Float.parseFloat(intent.getStringExtra("text3").toString());
 
                 Database db = new Database(getApplicationContext(), "healthpal", null, 1);
 
-                if(db.checkCart(username,product) == 1){
-                    Toast.makeText(getApplicationContext(),"Product Alredy Added",Toast.LENGTH_SHORT).show();
-                }else{
+                if (db.checkCartWithType(username, product, "medicine") == 1) {
+                    Toast.makeText(getApplicationContext(), "Product Already Added", Toast.LENGTH_SHORT).show();
+                } else {
                     db.addCart(username, product, price, "medicine");
                     Toast.makeText(getApplicationContext(), "Record Inserted to Cart", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(BuyMedicineDetailsActivity.this, BuyMedicineActivity.class));
+
+                    // Pass product information to CartBuyMedicineActivity
+                    Intent cartIntent = new Intent(BuyMedicineDetailsActivity.this, CartBuyMedicineActivity.class);
+                    cartIntent.putExtra("productName", product);
+                    cartIntent.putExtra("productPrice", price);
+                    startActivity(cartIntent);
                 }
             }
         });
     }
+
+
 }
