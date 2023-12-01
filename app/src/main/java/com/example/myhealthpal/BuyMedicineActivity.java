@@ -128,6 +128,7 @@ public class BuyMedicineActivity extends AppCompatActivity {
             }
         });
 
+        //search
         final SearchView searchView = findViewById(R.id.searchViewBM);
 
 
