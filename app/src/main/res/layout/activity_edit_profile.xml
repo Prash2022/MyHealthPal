@@ -54,7 +54,7 @@
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/color4"
-        android:textColorHint="@color/colorWhite"
+        android:textColorHint="@color/color4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
@@ -78,13 +78,13 @@
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/color4"
-        android:textColorHint="@color/colorWhite"
+        android:textColorHint="@color/color4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
-        app:layout_constraintVertical_bias="0.005" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editTextAddress"
@@ -102,7 +102,7 @@
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/color4"
-        android:textColorHint="@color/colorWhite"
+        android:textColorHint="@color/color4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
@@ -127,7 +127,7 @@
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/color4"
-        android:textColorHint="@color/colorWhite"
+        android:textColorHint="@color/color4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
