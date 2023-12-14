@@ -23,7 +23,7 @@ public class HealthArticlesDetailsActivity extends AppCompatActivity {
         tv1 = findViewById(R.id.textViewHADTitle);
         img = findViewById(R.id.imageViewHAD);
 
-        Intent intent=getIntent();
+        Intent intent = getIntent();
         tv1.setText(intent.getStringExtra("text1"));
 
         Bundle bundle = getIntent().getExtras();

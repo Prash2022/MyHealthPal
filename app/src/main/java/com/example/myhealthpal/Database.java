@@ -178,8 +178,7 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
 
         Cursor c = db.rawQuery("SELECT email, fullname, address, phone FROM users WHERE username=?", new String[]{user});
-
-// Check if the cursor has data and move to the first row
+        // Check if the cursor has data and move to the first row
         if (c.moveToFirst()) {
             int emailIndex = c.getColumnIndex("email");
             int fullnameIndex = c.getColumnIndex("fullname");

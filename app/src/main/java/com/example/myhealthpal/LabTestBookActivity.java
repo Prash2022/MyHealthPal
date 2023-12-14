@@ -53,7 +53,7 @@ public class LabTestBookActivity extends AppCompatActivity {
                     db.addOrder(username, edname.getText().toString(), edaddress.getText().toString(),
                             edcontact.getText().toString(), Integer.parseInt(edpincode.getText().toString()),
                             date.toString(), time.toString(), Float.parseFloat(price[1].toString()), "lab");
-                    db.removeCart(username, "lab"); //why???
+                    db.removeCart(username, "lab");
                     Toast.makeText(getApplicationContext(), "Your booking is done successfully", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(LabTestBookActivity.this, HomeActivity.class));
                 } catch (Exception e){

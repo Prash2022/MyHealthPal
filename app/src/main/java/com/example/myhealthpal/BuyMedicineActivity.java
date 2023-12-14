@@ -130,11 +130,7 @@ public class BuyMedicineActivity extends AppCompatActivity {
 
         //search
         final SearchView searchView = findViewById(R.id.searchViewBM);
-
-
         filteredList = new ArrayList<>(list);
-
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -148,37 +144,28 @@ public class BuyMedicineActivity extends AppCompatActivity {
             }
         });
     }
-
     private void filterList(String keyword) {
         filteredList.clear();
-
         for (int i = 0; i < list.size(); i++) {
             Object originalItem = list.get(i);
-
             if (originalItem instanceof HashMap) {
                 HashMap<String, String> originalHashMap = (HashMap<String, String>) originalItem;
                 HashMap<String, String> newItem = new HashMap<>();
-
                 for (String key : originalHashMap.keySet()) {
                     String value = originalHashMap.get(key);
                     newItem.put(key, value);
                 }
-
                 if (originalHashMap.get("line1").toLowerCase().contains(keyword.toLowerCase())) {
                    
                     newItem.put("originalIndex", String.valueOf(i));
                     filteredList.add(newItem);
-                }
-            }
-        }
-
+                }}}
         sa = new SimpleAdapter(this, filteredList,
                 R.layout.multi_lines,
                 new String[]{"line1", "line2", "line3", "line4", "line5"},
                 new int[]{R.id.line_a, R.id.line_b, R.id.line_c, R.id.line_d, R.id.line_e});
 
         lst.setAdapter(sa);
-
         lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
